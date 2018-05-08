@@ -12,9 +12,11 @@ const strategy = new BasicStrategy(
       }
       console.log(username);
       if (!user) {
+        console.log('incorrect username');
         return done(null, false, { message: 'Incorrect username' });
       }
       if (!user.checkPassword(password)) {
+        console.log('incorrect password');
         return done(null, false, { message: 'Incorrect password' });
       }
       return done(null, user);
