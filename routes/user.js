@@ -36,7 +36,7 @@ router.post(
     console.log(req.body);
     next();
   },
-  passport.authenticate('basic', { session: false }),
+  passport.authenticate('local'),
   (req, res) => {
     console.log('logged in', req.user);
     const userInfo = {
