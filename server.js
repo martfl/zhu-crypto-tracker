@@ -10,6 +10,11 @@ const app = express();
 const PORT = 8080;
 // Route requires
 const user = require('./routes/user');
+
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static('client/build'));
+}
+
 // MIDDLEWARE
 app.use(morgan('dev'));
 app.use(bodyParser.urlencoded({
@@ -31,13 +36,6 @@ app.use(passport.session()); // calls the deserializeUser
 
 // Routes
 app.use('/user', user);
-
-// CORS
-app.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', 'https://zhu-crypto.herokuapp.com/');
-  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
-  next();
-});
 
 // Starting Server
 app.listen(PORT, () => {
