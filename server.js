@@ -15,10 +15,6 @@ if (process.env.NODE_ENV === 'production') {
   app.use(express.static('client/build'));
 }
 
-// Passport
-app.use(passport.initialize());
-app.use(passport.session()); // calls the deserializeUser
-
 // MIDDLEWARE
 app.use(morgan('dev'));
 app.use(bodyParser.urlencoded({
@@ -33,6 +29,10 @@ app.use(session({
   resave: false, // required
   saveUninitialized: false, // required
 }));
+
+// Passport
+app.use(passport.initialize());
+app.use(passport.session()); // calls the deserializeUser
 
 // Routes
 app.use('/user', user);
