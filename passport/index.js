@@ -1,5 +1,6 @@
 const passport = require('passport');
 const LocalStrategy = require('./localStrategy');
+const BasicStrategy = require('./basicStrategy');
 const User = require('../database/models/user');
 
 // called on login, saves the id to session req.session.passport.user = {id:'..'}
@@ -22,6 +23,7 @@ passport.deserializeUser((id, done) => {
 });
 
 //  Use Strategies
+passport.use(BasicStrategy);
 passport.use(LocalStrategy);
 
 module.exports = passport;

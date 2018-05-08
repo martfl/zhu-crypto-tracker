@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "server.js",
   "scripts": {
-    "start": "concurrently \"yarn api\" \"yarn client\"",
+    "start": "concurrently \"yarn server\" \"yarn client\"",
     "server": "node ./server.js",
     "client": "cd client && yarn start"
   },
@@ -17,6 +17,7 @@
     "mongoose": "^5.0.17",
     "morgan": "^1.9.0",
     "passport": "^0.4.0",
+    "passport-http": "^0.3.0",
     "passport-local": "^1.0.0"
   },
   "devDependencies": {

@@ -1,11 +1,11 @@
 const User = require('../database/models/user');
-const LocalStrategy = require('passport-local').Strategy;
+const BasicStrategy = require('passport-http').BasicStrategy;
 
-const strategy = new LocalStrategy(
+const strategy = new BasicStrategy(
   {
     usernameField: 'username', // not necessary, DEFAULT
   },
-  ((username, password, done) => {
+  (username, password, done) => {
     User.findOne({ username }, (err, user) => {
       if (err) {
         return done(err);
@@ -19,7 +19,7 @@ const strategy = new LocalStrategy(
       }
       return done(null, user);
     });
-  }),
+  },
 );
 
 module.exports = strategy;
