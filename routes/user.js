@@ -36,11 +36,7 @@ router.post(
     console.log(req.body);
     next();
   },
-  passport.authenticate('basic', { session: false }),
-  (req, res) => {
-    console.log('using basic strategy');
-    res.json({ username: req.user, password: req.password });
-  },
+  passport.authenticate('local'),
   (req, res) => {
     console.log('logged in', req.user);
     const userInfo = {
