@@ -23,6 +23,7 @@ router.post('/', (req, res) => {
       });
       newUser.save((error, savedUser) => {
         if (error) return res.json(error);
+        console.log(savedUser);
         return res.json(savedUser);
       });
     }
